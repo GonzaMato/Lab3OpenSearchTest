@@ -21,7 +21,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./db:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data  # Use a named volume
 
   opensearch:
     image: opensearchproject/opensearch:latest
@@ -31,9 +31,9 @@ services:
       - "9200:9200"
       - "9300:9300"
     volumes:
-      - ./opensearch-docker/config.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - opensearch_data:/usr/share/elasticsearch/data  # Use a named volume
 
 
 volumes:
-    db:
-    opensearch:
+  db_data:  # Define named volume for PostgreSQL
+  opensearch_data:  # Define named volume for OpenSearch
