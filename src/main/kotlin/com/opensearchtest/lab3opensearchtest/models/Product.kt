@@ -1,4 +1,4 @@
-package com.opensearchtest.Lab3OpenSeachTest.models
+package com.opensearchtest.lab3opensearchtest.models
 
 import jakarta.persistence.ElementCollection
 import jakarta.persistence.Entity
@@ -8,13 +8,12 @@ import jakarta.persistence.Id
 
 @Entity
 data class Product(
-    val name : String = "",
-    val price : Double = 0.0,
-    val description : String = "",
+    val name: String = "",
+    val price: Double = 0.0,
+    val description: String = "",
     @ElementCollection
-    var tags: MutableList<String> = mutableListOf()
+    var tags: MutableList<String> = mutableListOf(),
 ) {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long = 0

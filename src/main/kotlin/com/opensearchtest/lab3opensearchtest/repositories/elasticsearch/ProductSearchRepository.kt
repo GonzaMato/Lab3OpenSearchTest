@@ -1,6 +1,6 @@
-package com.opensearchtest.Lab3OpenSeachTest.repositories.elasticsearch
+package com.opensearchtest.lab3opensearchtest.repositories.elasticsearch
 
-import com.opensearchtest.Lab3OpenSeachTest.models.Product
+import com.opensearchtest.lab3opensearchtest.models.Product
 import org.springframework.data.elasticsearch.annotations.Query
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 
