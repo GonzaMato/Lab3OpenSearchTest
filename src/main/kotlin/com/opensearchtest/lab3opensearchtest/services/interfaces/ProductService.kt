@@ -1,4 +1,4 @@
-package com.opensearchtest.lab3opensearchtest.services.`interface`
+package com.opensearchtest.lab3opensearchtest.services.interfaces
 
 interface ProductService {
     fun saveProduct(

@@ -3,7 +3,7 @@ package com.opensearchtest.lab3opensearchtest.services.implementations
 import com.opensearchtest.lab3opensearchtest.models.Product
 import com.opensearchtest.lab3opensearchtest.repositories.elasticsearch.ProductSearchRepository
 import com.opensearchtest.lab3opensearchtest.repositories.jparepository.ProductRepository
-import com.opensearchtest.lab3opensearchtest.services.`interface`.ProductService
+import com.opensearchtest.lab3opensearchtest.services.interfaces.ProductService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

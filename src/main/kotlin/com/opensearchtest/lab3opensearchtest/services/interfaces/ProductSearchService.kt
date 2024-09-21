@@ -1,4 +1,4 @@
-package com.opensearchtest.lab3opensearchtest.services.`interface`
+package com.opensearchtest.lab3opensearchtest.services.interfaces
 
 import com.opensearchtest.lab3opensearchtest.models.Product
 
