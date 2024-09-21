@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+
+  api:
+    image: apiopensearch
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+        - .:/app
+    env_file:
+      - .env
+    depends_on:
+        - db
+        - opensearch
+
+  db:
+    image: postgres:latest
+    ports:
+      -  "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - ./db:/var/lib/postgresql/data
+
+  opensearch:
+    image: opensearchproject/opensearch:latest
+    env_file:
+      - .env
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - ./opensearch-docker/config.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+
+
+volumes:
+    db:
+    opensearch:
