@@ -8,10 +8,8 @@ import org.opensearch.client.transport.OpenSearchTransport
 import org.opensearch.client.transport.rest_client.RestClientTransport
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories
 
 @Configuration
-@EnableElasticsearchRepositories(basePackages = ["com.opensearchtest.lab3opensearchtest.repositories.elasticsearch"])
 class OpenSearchConfig {
     @Bean
     fun openSearchClient(): OpenSearchClient {

@@ -10,7 +10,7 @@ import org.springframework.test.context.ActiveProfiles
 @ActiveProfiles("test")
 class Lab3OpenSearchTestApplicationTests {
     @MockBean
-    lateinit var productSearchRepository: RestHighLevelClient
+    lateinit var openSearchClient: RestHighLevelClient
 
     @Test
     fun contextLoads() {
