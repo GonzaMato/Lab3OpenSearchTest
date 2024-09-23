@@ -18,14 +18,12 @@ class OpenSearchConfig {
                 HttpHost("opensearch", 9200, "http"),
             ).build()
 
-        // Create the transport with a Jackson mapper
         val transport: OpenSearchTransport =
             RestClientTransport(
                 restClient,
                 JacksonJsonpMapper(),
             )
 
-        // And create the API client
         return OpenSearchClient(transport)
     }
 }

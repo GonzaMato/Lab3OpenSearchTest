@@ -22,15 +22,15 @@ class ProductLoader(
     @PostConstruct
     fun loadProductsIfEmpty() {
         if (productRepository.count() == 0L) {
-            val products = generateRandomProducts(10)
-            productRepository.saveAll(products) // Save to Postgres (JPA)
+            val products = generateRandomProducts(300)
+            val savedProducts = productRepository.saveAll(products) // Save to Postgres (JPA)
 
-            // Index products in OpenSearch
-            products.forEach { product ->
+            // Index products in OpenSearch using the saved products with IDs
+            savedProducts.forEach { product ->
                 indexProductInOpenSearch(product) // Index each product
             }
 
-            println("${products.size} products loaded into the database and OpenSearch.")
+            println("${savedProducts.size} products loaded into the database and OpenSearch.")
         } else {
             println("Database already contains products. No products were loaded.")
         }
@@ -60,8 +60,15 @@ class ProductLoader(
     // Function to index a product in OpenSearch
     private fun indexProductInOpenSearch(product: Product) {
         val openSearchClient = openSearchConfig.openSearchClient() // Get the OpenSearch client
+
+        // Ensure the product ID is not null
+        if (product.id == null) {
+            println("Product ID is null for product: ${product.name}. Skipping indexing.")
+            return
+        }
+
         val indexRequest =
-            IndexRequest.Builder<Product>()
+            org.opensearch.client.opensearch.core.IndexRequest.Builder<Product>()
                 .index("product") // Name of the OpenSearch index
                 .id(product.id.toString()) // Use product ID as the document ID
                 .document(product) // The product document
