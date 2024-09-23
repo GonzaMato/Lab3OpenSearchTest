@@ -36,8 +36,8 @@ dependencies {
 	implementation("org.postgresql:postgresql:42.6.0")
 	implementation("org.apache.httpcomponents:httpclient:4.5.13")
 	implementation("org.apache.httpcomponents:httpcore:4.4.13")
-	implementation "org.opensearch.client:opensearch-java:2.9.0"
-	implementation 'org.opensearch.client:opensearch-rest-high-level-client:2.5.0' // Use a version compatible with opensearch-java:2.9.0
+	implementation 'org.opensearch.client:opensearch-rest-high-level-client:2.6.0'
+	implementation 'org.opensearch.client:opensearch-java:2.6.0'
 
 }
 

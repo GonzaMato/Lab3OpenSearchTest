@@ -8,8 +8,6 @@ COPY src ./src
 
 WORKDIR /home/gradle/src
 
-COPY certs/opensearch.crt /app/opensearch.crt
-
 RUN gradle build
 
 EXPOSE ${PORT}
