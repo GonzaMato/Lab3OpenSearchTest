@@ -27,12 +27,13 @@ services:
     image: opensearchproject/opensearch:latest
     env_file:
       - .env
+    environment:
+      - "DISABLE_SECURITY_PLUGIN=true"
     ports:
       - "9200:9200"
       - "9300:9300"
     volumes:
       - opensearch_data:/usr/share/elasticsearch/data  # Use a named volume
-
 
 volumes:
   db_data:  # Define named volume for PostgreSQL

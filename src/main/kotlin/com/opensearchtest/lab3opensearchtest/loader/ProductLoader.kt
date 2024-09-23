@@ -20,13 +20,16 @@ class ProductLoader(
     // Load products after the application starts
     @PostConstruct
     fun loadProductsIfEmpty() {
-        // Check if there are any products in the database
         if (productRepository.count() == 0L) {
-            // Generate and save 1000 random products
             val products = generateRandomProducts(300)
             productRepository.saveAll(products) // Save to Postgres (JPA)
-            productSearchRepository.saveAll(products) // Index to Elasticsearch (OpenSearch)
-            println("1000 products loaded into the database.")
+
+            // Index products in batches to OpenSearch
+            products.chunked(100).forEach { batch ->
+                productSearchRepository.saveAll(batch) // Batch indexing
+            }
+
+            println("${products.size} products loaded into the database and OpenSearch.")
         } else {
             println("Database already contains products. No products were loaded.")
         }
